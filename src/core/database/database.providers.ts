@@ -4,6 +4,7 @@ import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 import { User } from '../../modules/users/user.entity';
 import { Structure } from '../../modules/structures/structure.entity';
+import { Owner } from '../../modules/owners/owner.entity';
 
 export const databaseProviders = [
     {
@@ -24,7 +25,7 @@ export const databaseProviders = [
                     config = databaseConfig.development;
             }
             const sequelize = new Sequelize(config);
-            sequelize.addModels([User, Structure]);
+            sequelize.addModels([User, Structure, Owner]);
             await sequelize.sync();
             return sequelize;
         },
