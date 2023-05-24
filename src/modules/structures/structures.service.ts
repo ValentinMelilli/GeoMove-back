@@ -9,8 +9,8 @@ import { STRUCTURE_REPOSITORY } from '../../core/constants';
 export class StructuresService {
     constructor(@Inject(STRUCTURE_REPOSITORY) private readonly structureRepository: typeof Structure) { }
 
-    async create(structure: StructureDto, userId): Promise<Structure> {
-        return await this.structureRepository.create<Structure>({ ...structure, userId });
+    async create(structure: StructureDto, ownerId): Promise<Structure> {
+        return await this.structureRepository.create<Structure>({ ...structure, ownerId });
     }
 
     async findAll(): Promise<Structure[]> {
@@ -26,12 +26,12 @@ export class StructuresService {
         });
     }
 
-    async delete(id, userId) {
-        return await this.structureRepository.destroy({ where: { id, userId } });
+    async delete(id, ownerId) {
+        return await this.structureRepository.destroy({ where: { id, ownerId } });
     }
 
-    async update(id, data, userId) {
-        const [numberOfAffectedRows, [updatedStructure]] = await this.structureRepository.update({ ...data }, { where: { id, userId }, returning: true });
+    async update(id, data, ownerId) {
+        const [numberOfAffectedRows, [updatedStructure]] = await this.structureRepository.update({ ...data }, { where: { id, ownerId }, returning: true });
         return { numberOfAffectedRows, updatedStructure };
     }
 }
