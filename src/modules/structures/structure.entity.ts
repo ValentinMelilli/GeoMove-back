@@ -1,6 +1,6 @@
 import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
 
-import { User } from '../users/user.entity';
+import { Owner } from '../owners/owner.entity';
 
 @Table
 export class Structure extends Model<Structure> {
@@ -67,13 +67,13 @@ export class Structure extends Model<Structure> {
     })
     website: string;
 
-    @ForeignKey(() => User)
+    @ForeignKey(() => Owner)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
     })
-    userId: number;
+    ownerId: number;
 
-    @BelongsTo(() => User)
-    user: User;
+    @BelongsTo(() => Owner)
+    owner: Owner;
 }
