@@ -7,6 +7,7 @@ import { DatabaseModule } from './core/database/database.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { StructuresModule } from './modules/structures/structures.module';
+import { OwnersModule } from './modules/owners/owners.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { StructuresModule } from './modules/structures/structures.module';
     UsersModule,
     AuthModule,
     StructuresModule,
+    OwnersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

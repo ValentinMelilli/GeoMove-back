@@ -8,4 +8,4 @@ import { ownersProviders } from './owners.providers';
   providers: [OwnersService, ...ownersProviders],
   controllers: [OwnersController],
 })
-export class StructuresModule {}
+export class OwnersModule {}
