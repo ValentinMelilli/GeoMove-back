@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 
 import { Structure } from './structure.entity';
 import { StructureDto } from './dto/structure.dto';
-import { User } from '../users/user.entity';
+import { Owner } from '../owners/owner.entity';
 import { STRUCTURE_REPOSITORY } from '../../core/constants';
 
 @Injectable()
@@ -15,14 +15,14 @@ export class StructuresService {
 
     async findAll(): Promise<Structure[]> {
         return await this.structureRepository.findAll<Structure>({
-            include: [{ model: User, attributes: { exclude: ['password'] } }],
+            include: [{ model: Owner }],
         });
     }
 
     async findOne(id): Promise<Structure> {
         return await this.structureRepository.findOne({
             where: { id },
-            include: [{ model: User, attributes: { exclude: ['password'] } }],
+            include: [{ model: Owner }],
         });
     }
 
