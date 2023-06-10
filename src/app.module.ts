@@ -8,6 +8,7 @@ import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { StructuresModule } from './modules/structures/structures.module';
 import { OwnersModule } from './modules/owners/owners.module';
+import { CategoriesModule } from './modules/categories/categories.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { OwnersModule } from './modules/owners/owners.module';
     AuthModule,
     StructuresModule,
     OwnersModule,
+    CategoriesModule
   ],
   controllers: [AppController],
   providers: [AppService],
