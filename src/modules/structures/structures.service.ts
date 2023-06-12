@@ -4,6 +4,7 @@ import { Structure } from './structure.entity';
 import { StructureDto } from './dto/structure.dto';
 import { Owner } from '../owners/owner.entity';
 import { STRUCTURE_REPOSITORY } from '../../core/constants';
+import { Timetable } from '../timetables/timetable.entity';
 
 @Injectable()
 export class StructuresService {
@@ -15,14 +16,14 @@ export class StructuresService {
 
     async findAll(): Promise<Structure[]> {
         return await this.structureRepository.findAll<Structure>({
-            include: [{ model: Owner }],
+            include: [{ model: Owner }, { model: Timetable }],
         });
     }
 
     async findOne(id): Promise<Structure> {
         return await this.structureRepository.findOne({
             where: { id },
-            include: [{ model: Owner }],
+            include: [{ model: Owner }, { model: Timetable }],
         });
     }
 
