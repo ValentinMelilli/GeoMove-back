@@ -1,5 +1,6 @@
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasOne } from 'sequelize-typescript';
 import { User } from '../users/user.entity';
+import { Structure } from '../structures/structure.entity';
 
 @Table
 export class Owner extends Model<Owner> {
@@ -34,4 +35,7 @@ export class Owner extends Model<Owner> {
 
     @BelongsTo(() => User)
     user: Owner;
+
+    @HasOne(() => Structure)
+    structure: Structure;
 }

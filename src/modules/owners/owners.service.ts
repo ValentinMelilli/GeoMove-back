@@ -3,6 +3,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { Owner } from './owner.entity';
 import { OwnerDto } from './dto/owner.dto';
 import { User } from '../users/user.entity';
+import { Structure } from '../structures/structure.entity';
 import { OWNER_REPOSITORY } from '../../core/constants';
 
 @Injectable()
@@ -15,14 +16,14 @@ export class OwnersService {
 
     async findAll(): Promise<Owner[]> {
         return await this.ownerRepository.findAll<Owner>({
-            include: [{ model: User, attributes: { exclude: ['password'] } }],
+            include: [{ model: User, attributes: { exclude: ['password'] } }, { model: Structure }],
         });
     }
 
     async findOne(id): Promise<Owner> {
         return await this.ownerRepository.findOne({
             where: { id },
-            include: [{ model: User, attributes: { exclude: ['password'] } }],
+            include: [{ model: User, attributes: { exclude: ['password'] } }, { model: Structure }],
         });
     }
 
