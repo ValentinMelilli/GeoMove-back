@@ -6,6 +6,7 @@ import { User } from '../../modules/users/user.entity';
 import { Structure } from '../../modules/structures/structure.entity';
 import { Owner } from '../../modules/owners/owner.entity';
 import { Category } from '../../modules/categories/category.entity';
+import { Timetable } from '../../modules/timetables/timetable.entity';
 
 export const databaseProviders = [
     {
@@ -26,7 +27,7 @@ export const databaseProviders = [
                     config = databaseConfig.development;
             }
             const sequelize = new Sequelize(config);
-            sequelize.addModels([User, Structure, Owner, Category]);
+            sequelize.addModels([User, Structure, Owner, Category, Timetable]);
             await sequelize.sync();
             return sequelize;
         },

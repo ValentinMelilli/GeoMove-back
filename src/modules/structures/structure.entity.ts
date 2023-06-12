@@ -1,6 +1,7 @@
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
 
 import { Owner } from '../owners/owner.entity';
+import { Timetable } from '../timetables/timetable.entity';
 
 @Table
 export class Structure extends Model<Structure> {
@@ -76,4 +77,7 @@ export class Structure extends Model<Structure> {
 
     @BelongsTo(() => Owner)
     owner: Owner;
+
+    @HasMany(() => Timetable)
+    timetable: Timetable[];
 }

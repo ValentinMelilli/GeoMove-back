@@ -16,4 +16,6 @@ export class UserDto {
     @IsNotEmpty()
     @IsISO8601({ strict: true })
     readonly birthdate: string;
+
+    readonly profilePicture: string;
 }

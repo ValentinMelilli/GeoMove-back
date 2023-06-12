@@ -24,4 +24,9 @@ export class User extends Model<User> {
         allowNull: false,
     })
     birthdate: string;
+    @Column({
+        type: DataType.STRING,
+        allowNull: true,
+    })
+    profilePicture: string;
 }

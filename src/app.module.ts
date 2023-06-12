@@ -9,6 +9,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { StructuresModule } from './modules/structures/structures.module';
 import { OwnersModule } from './modules/owners/owners.module';
 import { CategoriesModule } from './modules/categories/categories.module';
+import { TimetablesModule } from './modules/timetables/timetables.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { CategoriesModule } from './modules/categories/categories.module';
     AuthModule,
     StructuresModule,
     OwnersModule,
-    CategoriesModule
+    CategoriesModule,
+    TimetablesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
