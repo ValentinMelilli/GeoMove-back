@@ -11,6 +11,7 @@ import { OwnersModule } from './modules/owners/owners.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { TimetablesModule } from './modules/timetables/timetables.module';
 import { PeriodicitiesModule } from './modules/periodicity/periodicities.module';
+import { TagsModule } from './modules/tags/categories.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { PeriodicitiesModule } from './modules/periodicity/periodicities.module'
     CategoriesModule,
     TimetablesModule,
     PeriodicitiesModule,
+    TagsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
