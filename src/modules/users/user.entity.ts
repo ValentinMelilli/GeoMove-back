@@ -1,4 +1,6 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, HasOne } from 'sequelize-typescript';
+import { Owner } from '../owners/owner.entity';
+import { Structure } from '../structures/structure.entity';
 
 @Table
 export class User extends Model<User> {
@@ -29,4 +31,7 @@ export class User extends Model<User> {
         allowNull: true,
     })
     profilePicture: string;
+
+    @HasOne(() => Owner)
+    owner: Owner;
 }
