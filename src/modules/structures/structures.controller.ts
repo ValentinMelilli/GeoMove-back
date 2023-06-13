@@ -33,14 +33,14 @@ export class StructuresController {
     @Post()
     async create(@Body() structure: StructureDto, @Request() req): Promise<StructureEntity> {
         // create a new structure and return the newly created structure
-        return await this.structureService.create(structure, req.owner.id);
+        return await this.structureService.create(structure, req.user.owner.id);
     }
 
     @UseGuards(AuthGuard('jwt'))
     @Put(':id')
     async update(@Param('id') id: number, @Body() structure: StructureDto, @Request() req): Promise<StructureEntity> {
         // get the number of row affected and the updated structure
-        const { numberOfAffectedRows, updatedStructure } = await this.structureService.update(id, structure, req.owner.id);
+        const { numberOfAffectedRows, updatedStructure } = await this.structureService.update(id, structure, req.user.owner.id);
 
         // if the number of row affected is zero, it means the structure doesn't exist in our db
         if (numberOfAffectedRows === 0) {
@@ -55,7 +55,7 @@ export class StructuresController {
     @Delete(':id')
     async remove(@Param('id') id: number, @Request() req) {
         // delete the structure with this id
-        const deleted = await this.structureService.delete(id, req.owner.id);
+        const deleted = await this.structureService.delete(id, req.user.owner.id);
 
         // if the number of row affected is zero, then the structure doesn't exist in our db
         if (deleted === 0) {

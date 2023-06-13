@@ -6,6 +6,9 @@ import { Owner } from '../owners/owner.entity';
 import { STRUCTURE_REPOSITORY } from '../../core/constants';
 import { Timetable } from '../timetables/timetable.entity';
 import { Gallery } from '../galleries/gallery.entity';
+import { Pricing } from '../pricings/pricing.entity';
+import { Sport } from '../sports/sport.entity';
+import { Periodicity } from '../periodicity/periodicity.entity';
 
 @Injectable()
 export class StructuresService {
@@ -17,14 +20,14 @@ export class StructuresService {
 
     async findAll(): Promise<Structure[]> {
         return await this.structureRepository.findAll<Structure>({
-            include: [{ model: Owner }, { model: Timetable }],
+            include: [{ model: Owner }, { model: Timetable }, { model: Pricing, include: [Sport, Periodicity] }],
         });
     }
 
     async findOne(id): Promise<Structure> {
         return await this.structureRepository.findOne({
             where: { id },
-            include: [{ model: Owner }, { model: Timetable }, { model : Gallery }],
+            include: [{ model: Owner }, { model: Timetable }, { model: Pricing, include: [Sport, Periodicity] }, { model : Gallery }],
         });
     }
 

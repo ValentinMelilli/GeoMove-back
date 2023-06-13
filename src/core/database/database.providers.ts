@@ -12,6 +12,7 @@ import { Tag } from '../../modules/tags/tag.entity';
 import { Gallery } from '../../modules/galleries/gallery.entity';
 import { Sport } from '../../modules/sports/sport.entity';
 import { SportTag } from '../../modules/sports_tags/sport_tag.entity';
+import { Pricing } from 'src/modules/pricings/pricing.entity';
 
 export const databaseProviders = [
     {
@@ -32,7 +33,7 @@ export const databaseProviders = [
                     config = databaseConfig.development;
             }
             const sequelize = new Sequelize(config);
-            sequelize.addModels([User, Structure, Owner, Category, Timetable, Periodicity, Tag, Gallery, Sport, SportTag]);
+            sequelize.addModels([User, Structure, Owner, Category, Timetable, Periodicity, Tag, Gallery, Sport, SportTag, Pricing]);
             await sequelize.sync();
             return sequelize;
         },

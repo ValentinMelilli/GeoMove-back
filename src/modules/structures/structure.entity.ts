@@ -3,6 +3,7 @@ import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany } from '
 import { Owner } from '../owners/owner.entity';
 import { Timetable } from '../timetables/timetable.entity';
 import { Gallery } from '../galleries/gallery.entity';
+import { Pricing } from '../pricings/pricing.entity';
 
 @Table
 export class Structure extends Model<Structure> {
@@ -84,4 +85,7 @@ export class Structure extends Model<Structure> {
 
     @HasMany(() => Gallery)
     gallery: Gallery[];
+
+    @HasMany(() => Pricing)
+    pricing: Pricing[];
 }

@@ -33,14 +33,14 @@ export class GalleriesController {
     @Post()
     async create(@Body() gallery: GalleryDto, @Request() req): Promise<GalleryEntity> {
         // create a new gallery and return the newly created gallery
-        return await this.galleryService.create(gallery, req.structure.id);
+        return await this.galleryService.create(gallery, req.user.owner.structure.id);
     }
 
     @UseGuards(AuthGuard('jwt'))
     @Put(':id')
     async update(@Param('id') id: number, @Body() gallery: GalleryDto, @Request() req): Promise<GalleryEntity> {
         // get the number of row affected and the updated gallery
-        const { numberOfAffectedRows, updatedGallery } = await this.galleryService.update(id, gallery, req.structure.id);
+        const { numberOfAffectedRows, updatedGallery } = await this.galleryService.update(id, gallery, req.user.owner.structure.id);
 
         // if the number of row affected is zero, it means the gallery doesn't exist in our db
         if (numberOfAffectedRows === 0) {
@@ -55,7 +55,7 @@ export class GalleriesController {
     @Delete(':id')
     async remove(@Param('id') id: number, @Request() req) {
         // delete the gallery with this id
-        const deleted = await this.galleryService.delete(id, req.structure.id);
+        const deleted = await this.galleryService.delete(id, req.user.owner.structure.id);
 
         // if the number of row affected is zero, then the gallery doesn't exist in our db
         if (deleted === 0) {

@@ -15,6 +15,7 @@ import { TagsModule } from './modules/tags/categories.module';
 import { GalleriesModule } from './modules/galleries/galleries.module';
 import { SportsModule } from './modules/sports/sports.module';
 import { SportsTagsModule } from './modules/sports_tags/sports_tags.module';
+import { PricingsModule } from './modules/pricings/pricings.module';
 
 @Module({
   imports: [
@@ -30,7 +31,8 @@ import { SportsTagsModule } from './modules/sports_tags/sports_tags.module';
     TagsModule,
     GalleriesModule,
     SportsModule,
-    SportsTagsModule
+    SportsTagsModule,
+    PricingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
