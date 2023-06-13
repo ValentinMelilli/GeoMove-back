@@ -13,6 +13,7 @@ import { TimetablesModule } from './modules/timetables/timetables.module';
 import { PeriodicitiesModule } from './modules/periodicity/periodicities.module';
 import { TagsModule } from './modules/tags/categories.module';
 import { GalleriesModule } from './modules/galleries/galleries.module';
+import { SportsModule } from './modules/sports/sports.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { GalleriesModule } from './modules/galleries/galleries.module';
     PeriodicitiesModule,
     TagsModule,
     GalleriesModule,
+    SportsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

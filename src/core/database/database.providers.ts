@@ -10,6 +10,7 @@ import { Timetable } from '../../modules/timetables/timetable.entity';
 import { Periodicity } from '../../modules/periodicity/periodicity.entity';
 import { Tag } from '../../modules/tags/tag.entity';
 import { Gallery } from '../../modules/galleries/gallery.entity';
+import { Sport } from '../../modules/sports/sport.entity';
 
 export const databaseProviders = [
     {
@@ -30,7 +31,7 @@ export const databaseProviders = [
                     config = databaseConfig.development;
             }
             const sequelize = new Sequelize(config);
-            sequelize.addModels([User, Structure, Owner, Category, Timetable, Periodicity, Tag, Gallery]);
+            sequelize.addModels([User, Structure, Owner, Category, Timetable, Periodicity, Tag, Gallery, Sport]);
             await sequelize.sync();
             return sequelize;
         },
