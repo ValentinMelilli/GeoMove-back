@@ -10,6 +10,7 @@ import { StructuresModule } from './modules/structures/structures.module';
 import { OwnersModule } from './modules/owners/owners.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { TimetablesModule } from './modules/timetables/timetables.module';
+import { PeriodicitiesModule } from './modules/periodicity/periodicities.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { TimetablesModule } from './modules/timetables/timetables.module';
     OwnersModule,
     CategoriesModule,
     TimetablesModule,
+    PeriodicitiesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
