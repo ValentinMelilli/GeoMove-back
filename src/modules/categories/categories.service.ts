@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 
 import { Category } from './category.entity';
 import { CategoryDto } from './dto/category.dto';
+import { Sport } from '../sports/sport.entity';
 import { CATEGORY_REPOSITORY } from '../../core/constants';
 
 @Injectable()
@@ -13,12 +14,15 @@ export class CategoriesService {
     }
 
     async findAll(): Promise<Category[]> {
-        return await this.categoryRepository.findAll<Category>();
+        return await this.categoryRepository.findAll<Category>({
+            include: [{ model: Sport }],
+        });
     }
 
     async findOne(id): Promise<Category> {
         return await this.categoryRepository.findOne({
             where: { id },
+            include: [{ model: Sport }],
         });
     }
 
