@@ -12,7 +12,7 @@ import { Tag } from '../../modules/tags/tag.entity';
 import { Gallery } from '../../modules/galleries/gallery.entity';
 import { Sport } from '../../modules/sports/sport.entity';
 import { SportTag } from '../../modules/sports_tags/sport_tag.entity';
-import { Pricing } from 'src/modules/pricings/pricing.entity';
+import { Pricing } from '../../modules/pricings/pricing.entity';
 
 export const databaseProviders = [
     {

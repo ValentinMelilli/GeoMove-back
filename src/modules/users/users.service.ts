@@ -17,21 +17,21 @@ export class UsersService {
     async findOneByEmail(email: string): Promise<User> {
         return await this.userRepository.findOne<User>({
             where: { email: email },
-            include: [{ model: Owner, include: [Structure] }]
+            include: [{ model: Owner, attributes: ['id'], include: [{ model: Structure, attributes: ['id'] }] }]
         });
     }
 
     async findOneByUsername(name: string): Promise<User> {
         return await this.userRepository.findOne<User>({
             where: { name: name },
-            include: [{ model: Owner, include: [Structure] }]
+            include: [{ model: Owner, attributes: ['id'], include: [{ model: Structure, attributes: ['id'] }] }]
         });
     }
 
     async findOneById(id: number): Promise<User> {
         return await this.userRepository.findOne<User>({
             where: { id: id },
-            include: [{ model: Owner, include: [Structure] }]
+            include: [{ model: Owner, attributes: ['id'], include: [{ model: Structure, attributes: ['id'] }] }]
         });
     }
 }
