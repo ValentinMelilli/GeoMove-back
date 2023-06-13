@@ -14,6 +14,7 @@ import { PeriodicitiesModule } from './modules/periodicity/periodicities.module'
 import { TagsModule } from './modules/tags/categories.module';
 import { GalleriesModule } from './modules/galleries/galleries.module';
 import { SportsModule } from './modules/sports/sports.module';
+import { SportsTagsModule } from './modules/sports_tags/sports_tags.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { SportsModule } from './modules/sports/sports.module';
     TagsModule,
     GalleriesModule,
     SportsModule,
+    SportsTagsModule
   ],
   controllers: [AppController],
   providers: [AppService],

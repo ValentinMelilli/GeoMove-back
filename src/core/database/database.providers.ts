@@ -11,6 +11,7 @@ import { Periodicity } from '../../modules/periodicity/periodicity.entity';
 import { Tag } from '../../modules/tags/tag.entity';
 import { Gallery } from '../../modules/galleries/gallery.entity';
 import { Sport } from '../../modules/sports/sport.entity';
+import { SportTag } from '../../modules/sports_tags/sport_tag.entity';
 
 export const databaseProviders = [
     {
@@ -31,7 +32,7 @@ export const databaseProviders = [
                     config = databaseConfig.development;
             }
             const sequelize = new Sequelize(config);
-            sequelize.addModels([User, Structure, Owner, Category, Timetable, Periodicity, Tag, Gallery, Sport]);
+            sequelize.addModels([User, Structure, Owner, Category, Timetable, Periodicity, Tag, Gallery, Sport, SportTag]);
             await sequelize.sync();
             return sequelize;
         },

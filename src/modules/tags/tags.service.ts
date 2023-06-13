@@ -3,6 +3,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { Tag } from './tag.entity';
 import { TagDto } from './dto/tag.dto';
 import { TAG_REPOSITORY } from '../../core/constants';
+import { Sport } from '../sports/sport.entity';
 
 @Injectable()
 export class TagsService {
@@ -13,12 +14,15 @@ export class TagsService {
     }
 
     async findAll(): Promise<Tag[]> {
-        return await this.tagRepository.findAll<Tag>();
+        return await this.tagRepository.findAll<Tag>({
+            include: [{ model: Sport }],
+        });
     }
 
     async findOne(id): Promise<Tag> {
         return await this.tagRepository.findOne({
             where: { id },
+            include: [{ model: Sport }],
         });
     }
 

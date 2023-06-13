@@ -4,6 +4,7 @@ import { Sport } from './sport.entity';
 import { SportDto } from './dto/sport.dto';
 import { SPORT_REPOSITORY } from '../../core/constants';
 import { Category } from '../categories/category.entity';
+import { Tag } from '../tags/tag.entity';
 
 @Injectable()
 export class SportsService {
@@ -15,14 +16,14 @@ export class SportsService {
 
     async findAll(): Promise<Sport[]> {
         return await this.sportRepository.findAll<Sport>({
-            include: [{ model: Category }],
+            include: [{ model: Category }, { model: Tag }],
         });
     }
 
     async findOne(id): Promise<Sport> {
         return await this.sportRepository.findOne({
             where: { id },
-            include: [{ model: Category }],
+            include: [{ model: Category }, { model: Tag }],
         });
     }
 
