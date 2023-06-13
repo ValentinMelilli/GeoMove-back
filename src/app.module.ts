@@ -12,6 +12,7 @@ import { CategoriesModule } from './modules/categories/categories.module';
 import { TimetablesModule } from './modules/timetables/timetables.module';
 import { PeriodicitiesModule } from './modules/periodicity/periodicities.module';
 import { TagsModule } from './modules/tags/categories.module';
+import { GalleriesModule } from './modules/galleries/galleries.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { TagsModule } from './modules/tags/categories.module';
     TimetablesModule,
     PeriodicitiesModule,
     TagsModule,
+    GalleriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
