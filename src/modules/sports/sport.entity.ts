@@ -1,4 +1,4 @@
-import { Table, Column, Model, DataType, BelongsTo } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { Category } from '../categories/category.entity';
 
 @Table
@@ -9,6 +9,13 @@ export class Sport extends Model<Sport> {
         allowNull: false,
     })
     name: string;
+
+    @ForeignKey(() => Category)
+    @Column({
+        type: DataType.INTEGER,
+        allowNull: false,
+    })
+    categoryId: number;
 
     @BelongsTo(() => Category)
     category: Category;
