@@ -17,7 +17,7 @@ export class StructuresService {
 
     async findAll(): Promise<Structure[]> {
         return await this.structureRepository.findAll<Structure>({
-            include: [{ model: Owner }, { model: Timetable }, { model : Gallery }],
+            include: [{ model: Owner }, { model: Timetable }],
         });
     }
 
