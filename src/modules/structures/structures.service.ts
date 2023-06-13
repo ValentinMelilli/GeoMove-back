@@ -20,14 +20,29 @@ export class StructuresService {
 
     async findAll(): Promise<Structure[]> {
         return await this.structureRepository.findAll<Structure>({
-            include: [{ model: Owner }, { model: Timetable }, { model: Pricing, include: [Sport, Periodicity] }],
+            include: [
+                { model: Owner, attributes: { exclude: ['createdAt', 'updatedAt'] } },
+                { model: Timetable, attributes: { exclude: ['createdAt', 'updatedAt'] } },
+                { model: Pricing, attributes: { exclude: ['createdAt', 'updatedAt'] }, include: [
+                    { model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } },
+                    { model: Periodicity, attributes: { exclude: ['createdAt', 'updatedAt'] } }
+                ] }
+            ],
         });
     }
 
     async findOne(id): Promise<Structure> {
         return await this.structureRepository.findOne({
             where: { id },
-            include: [{ model: Owner }, { model: Timetable }, { model: Pricing, include: [Sport, Periodicity] }, { model : Gallery }],
+            include: [
+                { model: Owner },
+                { model: Timetable },
+                { model: Pricing, include: [
+                    { model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } },
+                    { model: Periodicity, attributes: { exclude: ['createdAt', 'updatedAt'] } }
+                ] },
+                { model : Gallery }
+            ],
         });
     }
 

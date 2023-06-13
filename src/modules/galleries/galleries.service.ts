@@ -15,14 +15,14 @@ export class GalleriesService {
 
     async findAll(): Promise<Gallery[]> {
         return await this.galleryRepository.findAll<Gallery>({
-            include: [{ model: Structure }],
+            include: [{ model: Structure, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
         });
     }
 
     async findOne(id): Promise<Gallery> {
         return await this.galleryRepository.findOne({
             where: { id },
-            include: [{ model: Structure }],
+            include: [{ model: Structure, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
         });
     }
 

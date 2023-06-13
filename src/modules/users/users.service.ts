@@ -17,7 +17,7 @@ export class UsersService {
     async findOneByEmail(email: string): Promise<User> {
         return await this.userRepository.findOne<User>({
             where: { email: email },
-            include: [{ model: Owner, attributes: ['id'], include: [{ model: Structure, attributes: ['id'] }] }]
+            include: [{ model: Owner, attributes: ['id'], include: [{ model: Structure, attributes: ['id'] }] }],
         });
     }
 

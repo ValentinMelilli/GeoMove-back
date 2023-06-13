@@ -15,14 +15,16 @@ export class TagsService {
 
     async findAll(): Promise<Tag[]> {
         return await this.tagRepository.findAll<Tag>({
-            include: [{ model: Sport }],
+            include: [{ model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
+            attributes: { exclude: ['createdAt', 'updatedAt'] },
         });
     }
 
     async findOne(id): Promise<Tag> {
         return await this.tagRepository.findOne({
             where: { id },
-            include: [{ model: Sport }],
+            include: [{ model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
+            attributes: { exclude: ['createdAt', 'updatedAt'] },
         });
     }
 

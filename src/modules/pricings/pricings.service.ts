@@ -17,14 +17,22 @@ export class PricingsService {
 
     async findAll(): Promise<Pricing[]> {
         return await this.pricingRepository.findAll<Pricing>({
-            include: [{ model: Structure }, { model: Sport }, { model: Periodicity }],
+            include: [
+                { model: Structure, attributes: { exclude: ['createdAt', 'updatedAt'] } },
+                { model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } },
+                { model: Periodicity, attributes: { exclude: ['createdAt', 'updatedAt'] } }
+            ],
         });
     }
 
     async findOne(id): Promise<Pricing> {
         return await this.pricingRepository.findOne({
             where: { id },
-            include: [{ model: Structure }, { model: Sport }, { model: Periodicity }],
+            include: [
+                { model: Structure, attributes: { exclude: ['createdAt', 'updatedAt'] } },
+                { model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } },
+                { model: Periodicity, attributes: { exclude: ['createdAt', 'updatedAt'] } }
+            ],
         });
     }
 

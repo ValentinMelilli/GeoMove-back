@@ -13,12 +13,15 @@ export class PeriodicitiesService {
     }
 
     async findAll(): Promise<Periodicity[]> {
-        return await this.periodicityRepository.findAll<Periodicity>();
+        return await this.periodicityRepository.findAll<Periodicity>({
+            attributes: { exclude: ['createdAt', 'updatedAt'] },
+        });
     }
 
     async findOne(id): Promise<Periodicity> {
         return await this.periodicityRepository.findOne({
             where: { id },
+            attributes: { exclude: ['createdAt', 'updatedAt'] },
         });
     }
 

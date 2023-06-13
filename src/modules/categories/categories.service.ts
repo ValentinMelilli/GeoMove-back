@@ -15,14 +15,16 @@ export class CategoriesService {
 
     async findAll(): Promise<Category[]> {
         return await this.categoryRepository.findAll<Category>({
-            include: [{ model: Sport }],
+            include: [{ model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
+            attributes: { exclude: ['createdAt', 'updatedAt'] },
         });
     }
 
     async findOne(id): Promise<Category> {
         return await this.categoryRepository.findOne({
             where: { id },
-            include: [{ model: Sport }],
+            include: [{ model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
+            attributes: { exclude: ['createdAt', 'updatedAt'] },
         });
     }
 

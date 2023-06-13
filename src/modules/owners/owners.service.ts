@@ -16,14 +16,14 @@ export class OwnersService {
 
     async findAll(): Promise<Owner[]> {
         return await this.ownerRepository.findAll<Owner>({
-            include: [{ model: User, attributes: { exclude: ['password'] } }, { model: Structure }],
+            include: [{ model: User, attributes: { exclude: ['password'] } }, { model: Structure, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
         });
     }
 
     async findOne(id): Promise<Owner> {
         return await this.ownerRepository.findOne({
             where: { id },
-            include: [{ model: User, attributes: { exclude: ['password'] } }, { model: Structure }],
+            include: [{ model: User, attributes: { exclude: ['password'] } }, { model: Structure, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
         });
     }
 
