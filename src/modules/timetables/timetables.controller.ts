@@ -33,14 +33,14 @@ export class TimetablesController {
     @Post()
     async create(@Body() timetable: TimetableDto, @Request() req): Promise<TimetableEntity> {
         // create a new timetable and return the newly created timetable
-        return await this.timetableService.create(timetable, req.user.id);
+        return await this.timetableService.create(timetable, req.user.owner.structure.id);
     }
 
     @UseGuards(AuthGuard('jwt'))
     @Put(':id')
     async update(@Param('id') id: number, @Body() timetable: TimetableDto, @Request() req): Promise<TimetableEntity> {
         // get the number of row affected and the updated timetable
-        const { numberOfAffectedRows, updatedTimetable } = await this.timetableService.update(id, timetable, req.user.id);
+        const { numberOfAffectedRows, updatedTimetable } = await this.timetableService.update(id, timetable, req.user.owner.structure.id);
 
         // if the number of row affected is zero, it means the timetable doesn't exist in our db
         if (numberOfAffectedRows === 0) {
@@ -55,7 +55,7 @@ export class TimetablesController {
     @Delete(':id')
     async remove(@Param('id') id: number, @Request() req) {
         // delete the timetable with this id
-        const deleted = await this.timetableService.delete(id, req.user.id);
+        const deleted = await this.timetableService.delete(id, req.user.owner.structure.id);
 
         // if the number of row affected is zero, then the timetable doesn't exist in our db
         if (deleted === 0) {

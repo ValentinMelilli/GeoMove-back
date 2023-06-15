@@ -9,6 +9,7 @@ import { Gallery } from '../galleries/gallery.entity';
 import { Pricing } from '../pricings/pricing.entity';
 import { Sport } from '../sports/sport.entity';
 import { Periodicity } from '../periodicity/periodicity.entity';
+import { Category } from '../categories/category.entity';
 
 @Injectable()
 export class StructuresService {
@@ -21,11 +22,12 @@ export class StructuresService {
     async findAll(): Promise<Structure[]> {
         return await this.structureRepository.findAll<Structure>({
             include: [
-                { model: Owner, attributes: { exclude: ['createdAt', 'updatedAt'] } },
-                { model: Timetable, attributes: { exclude: ['createdAt', 'updatedAt'] } },
-                { model: Pricing, attributes: { exclude: ['createdAt', 'updatedAt'] }, include: [
-                    { model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } },
-                    { model: Periodicity, attributes: { exclude: ['createdAt', 'updatedAt'] } }
+                { model: Owner },
+                { model: Category, attributes: { exclude: ['id', 'createdAt', 'updatedAt'] } },
+                { model: Timetable, attributes: { exclude: ['id', 'structureId', 'createdAt', 'updatedAt'] } },
+                { model: Pricing, attributes: { exclude: ['id', 'periodicityId', 'sportId', 'structureId', 'createdAt', 'updatedAt'] },  include: [
+                    { model: Sport, attributes: { exclude: ['id', 'categoryId', 'createdAt', 'updatedAt'] } },
+                    { model: Periodicity, attributes: { exclude: ['id', 'createdAt', 'updatedAt'] } }
                 ] }
             ],
         });
@@ -36,10 +38,11 @@ export class StructuresService {
             where: { id },
             include: [
                 { model: Owner },
-                { model: Timetable },
-                { model: Pricing, include: [
-                    { model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } },
-                    { model: Periodicity, attributes: { exclude: ['createdAt', 'updatedAt'] } }
+                { model: Category, attributes: { exclude: ['id', 'createdAt', 'updatedAt'] } },
+                { model: Timetable, attributes: { exclude: ['id', 'structureId', 'createdAt', 'updatedAt'] } },
+                { model: Pricing, attributes: { exclude: ['id', 'periodicityId', 'sportId', 'structureId', 'createdAt', 'updatedAt'] },  include: [
+                    { model: Sport, attributes: { exclude: ['id', 'categoryId', 'createdAt', 'updatedAt'] } },
+                    { model: Periodicity, attributes: { exclude: ['id', 'createdAt', 'updatedAt'] } }
                 ] },
                 { model : Gallery }
             ],

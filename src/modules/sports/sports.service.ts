@@ -16,7 +16,7 @@ export class SportsService {
 
     async findAll(): Promise<Sport[]> {
         return await this.sportRepository.findAll<Sport>({
-            include: [{ model: Category, attributes: { exclude: ['createdAt', 'updatedAt'] } }, { model: Tag, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
+            include: [{ model: Tag, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
             attributes: { exclude: ['createdAt', 'updatedAt'] },
         });
     }
@@ -24,7 +24,7 @@ export class SportsService {
     async findOne(id): Promise<Sport> {
         return await this.sportRepository.findOne({
             where: { id },
-            include: [{ model: Category, attributes: { exclude: ['createdAt', 'updatedAt'] } }, { model: Tag, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
+            include: [{ model: Tag, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
             attributes: { exclude: ['createdAt', 'updatedAt'] },
         });
     }

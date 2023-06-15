@@ -11,7 +11,7 @@ import { OwnersModule } from './modules/owners/owners.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { TimetablesModule } from './modules/timetables/timetables.module';
 import { PeriodicitiesModule } from './modules/periodicity/periodicities.module';
-import { TagsModule } from './modules/tags/categories.module';
+import { TagsModule } from './modules/tags/tags.module';
 import { GalleriesModule } from './modules/galleries/galleries.module';
 import { SportsModule } from './modules/sports/sports.module';
 import { SportsTagsModule } from './modules/sports_tags/sports_tags.module';

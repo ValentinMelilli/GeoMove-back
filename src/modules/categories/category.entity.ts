@@ -1,6 +1,6 @@
 import { Table, Column, Model, DataType, HasMany } from 'sequelize-typescript';
 
-import { Sport } from '../sports/sport.entity';
+import { Structure } from '../structures/structure.entity';
 
 @Table
 export class Category extends Model<Category> {
@@ -11,6 +11,6 @@ export class Category extends Model<Category> {
     })
     name: string;
 
-    @HasMany(() => Sport)
-    sports: Sport[];
+    @HasMany(() => Structure)
+    structures: Structure[];
 }

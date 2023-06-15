@@ -2,8 +2,8 @@ import { Injectable, Inject } from '@nestjs/common';
 
 import { Category } from './category.entity';
 import { CategoryDto } from './dto/category.dto';
-import { Sport } from '../sports/sport.entity';
 import { CATEGORY_REPOSITORY } from '../../core/constants';
+import { Structure } from '../structures/structure.entity';
 
 @Injectable()
 export class CategoriesService {
@@ -15,7 +15,7 @@ export class CategoriesService {
 
     async findAll(): Promise<Category[]> {
         return await this.categoryRepository.findAll<Category>({
-            include: [{ model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
+            include: [{ model: Structure, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
             attributes: { exclude: ['createdAt', 'updatedAt'] },
         });
     }
@@ -23,7 +23,7 @@ export class CategoriesService {
     async findOne(id): Promise<Category> {
         return await this.categoryRepository.findOne({
             where: { id },
-            include: [{ model: Sport, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
+            include: [{ model: Structure, attributes: { exclude: ['createdAt', 'updatedAt'] } }],
             attributes: { exclude: ['createdAt', 'updatedAt'] },
         });
     }
