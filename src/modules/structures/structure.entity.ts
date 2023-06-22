@@ -21,6 +21,12 @@ export class Structure extends Model<Structure> {
     description: string;
 
     @Column({
+        type: DataType.STRING,
+        allowNull: true,
+    })
+    profilePicture: string;
+
+    @Column({
         type: DataType.TEXT,
         allowNull: false,
     })

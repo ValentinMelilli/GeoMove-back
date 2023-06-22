@@ -10,6 +10,8 @@ export class StructureDto {
     @IsNotEmpty()
     readonly description: string;
 
+    readonly profilePicture: string;
+
     @IsNotEmpty()
     readonly address: string;
 
